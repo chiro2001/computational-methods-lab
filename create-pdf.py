@@ -27,8 +27,8 @@ def make_pdf(targets: list):
         insert_at = tex_text.find('\n')
         insert_text = """
     \\usepackage{fontspec, xunicode, xltxtra}
-    \\setmainfont{Microsoft YaHei}
     \\usepackage{ctex}
+    \\setmainfont{Microsoft YaHei}
 """
         tex_text = ''.join([tex_text[:insert_at], insert_text, tex_text[insert_at:]])
     
