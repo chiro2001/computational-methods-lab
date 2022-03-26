@@ -11,10 +11,6 @@ def make_pdf(targets: list):
         template = json.load(f)
         cells = []
         for file in files:
-            # file_basename = os.path.basename(file)
-            # dist_file = f"output/{file_basename}"
-            # os.system(f"jupyter nbconvert --to latex {file}")
-            # print(file, file_basename)
             with open(os.path.join("notebooks", file), "rb") as f2:
                 lab_data = json.load(f2)
                 cells.extend(lab_data['cells'])
