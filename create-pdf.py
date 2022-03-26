@@ -4,7 +4,9 @@ import json
 
 
 def make_pdf(targets: list):
-    output_file_basename = "计算方法实验" + ("" if len(targets) == 0 else ("(" + "-".join(targets) + ")"))
+    if not os.path.exists("output"):
+        os.mkdir("output")
+    output_file_basename = "计算方法实验" + ("" if len(targets) == 0 else ("（" + "、".join(targets) + "）"))
     files = [file for file in os.listdir("notebooks") if file.endswith("ipynb") and ((sum([t in file for t in targets])) > 0 if len(targets) > 0 else True)]
     list.sort(files)
     with open("notebooks/templates/lab-wrapper.ipynb", "rb") as f:
