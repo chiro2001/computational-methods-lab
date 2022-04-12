@@ -1,11 +1,15 @@
 import sys
 import os
 import json
+import shutil
 
 
 def make_pdf(targets: list):
     if not os.path.exists("output"):
         os.mkdir("output")
+    if os.path.exists("output/imgs"):
+        shutil.rmtree("output/imgs")
+    shutil.copytree("notebooks/imgs", "output/imgs")
     output_file_basename = "计算方法实验" + ("" if len(targets) == 0 else ("（" + "、".join(targets) + "）"))
     files = [file for file in os.listdir("notebooks") if file.endswith("ipynb") and ((sum([t in file for t in targets])) > 0 if len(targets) > 0 else True)]
     list.sort(files)
