@@ -41,7 +41,7 @@ def make_pdf(targets: list):
         
     dir_now = os.path.abspath(".")
     os.chdir("output")
-    os.system(f"xelatex {output_file_basename + '.tex'}")
+    os.system(f"xelatex -interaction=nonstopmode {output_file_basename + '.tex'}")
     os.chdir(dir_now)
 
 
